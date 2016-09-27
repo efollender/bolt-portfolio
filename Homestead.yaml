@@ -1,0 +1,39 @@
+---
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+provider: virtualbox
+
+authorize: ~/.ssh/id_rsa.pub
+
+keys:
+    - ~/.ssh/id_rsa
+
+folders:
+    - map: ~/Code
+      to: /home/vagrant/Code
+    - map: ~/Sites
+      to: /home/vagrant/Sites
+
+sites:
+    - map: homestead.app
+      to: /home/vagrant/Code/Laravel/public
+    - map: craft.dev
+      to: /home/vagrant/Code/bu-wiki/public
+    - map: elf.dev
+      to: /home/vagrant/Code/bolt-portfolio/public
+databases:
+    - homestead
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 50000
+#       to: 5000
+#     - send: 7777
+#       to: 777
+#       protocol: udp

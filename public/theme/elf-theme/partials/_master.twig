@@ -1,0 +1,47 @@
+{% set main_width = theme.layout.main_width|default(8) %}
+{% set aside_width = theme.layout.aside_width|default(4) %}
+<!doctype html>
+<html class="no-js" lang="{{ htmllang() }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {# make sure we always display a proper title: The record's title if there is one, appended with the
+           sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
+        <title>
+            {%- if record.title is defined %}{{ record.title|striptags }} | {% endif -%}
+                {{ app.config.get('general/sitename') -}}
+            {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif -%}
+        </title>
+        {% set styles = config.get('theme/node/css') %}
+        {% for style in styles %}
+            <link rel="stylesheet" type="text/css" href="{{ style }}"/>
+        {% endfor %}
+        <link href='https://fonts.googleapis.com/css?family=Noto+Sans:700,700italic' rel='stylesheet' type='text/css'>
+        {% block headincludes %}
+        {% endblock headincludes %}
+    </head>
+    <body>
+
+        {% block body %}
+
+            {{ include('partials/_header.twig') }}
+
+            <div class="main-content">
+
+                {% block main %}
+                {% endblock main %}
+
+            </div>
+
+        {% endblock body %}
+        {{ include('partials/_footer.twig') }}
+
+        {% block bottomincludes %}
+        {% endblock bottomincludes %}
+        {% set scripts = config.get('theme/node/js') %}
+        {% for script in scripts %}
+            <script type="text/javascript" src="{{ script }}"></script>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,16 @@
+layout:
+  aside: right
+  aside_width: 4
+  main_width: 8
+  variant: centered
+homepage_template: index.twig
+notfound: notfound.twig
+templateselect:
+  templates:
+    - name: Template with extra fields
+      filename: extrafields.twig
+    - name: Another template with extra fields
+      filename: anotherextrafields.twig
+node:
+  js:
+    - 'http://localhost:4001/dist/bundle.js'

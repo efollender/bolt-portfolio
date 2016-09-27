@@ -1,0 +1,23 @@
+.project-item
+  width 100%
+  display inline-block
+  position relative
+  transform translateX(-400%)
+  h2
+    font-family 'Monospace', monotype
+    color lime
+    font-size 1.2rem
+    text-transform uppercase
+    background black
+    padding 1rem
+    display inline-block
+    font-weight normal
+    margin 0
+  .image-list__wrapper
+    overflow hidden
+    max-height 1000px
+    transition all .2s ease-in-out
+    &.collapsed
+      max-height 0
+  img
+    width 100%
